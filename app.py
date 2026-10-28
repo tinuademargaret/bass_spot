@@ -38,10 +38,11 @@ def simulate(mask_bytes, shape, parameters, kind, physics, point, frequency):
     return log_response(AcousticSolver(room, physics).solve(point, frequency), physics)
 
 
-checkpoints = sorted(str(path) for path in Path("runs").glob("*/*/best.pt"))
+checkpoints = sorted(str(path) for path in Path("models").glob("*.pt"))
+checkpoints += sorted(str(path) for path in Path("runs").glob("*/*/best.pt"))
 with st.sidebar:
     st.header("Room and speaker")
-    checkpoint = st.selectbox("Trained model", ["Simulator only", *checkpoints])
+    checkpoint = st.selectbox("Trained model", ["Simulator only", *checkpoints], index=1 if checkpoints else 0)
     predictor = None
     if checkpoint != "Simulator only":
         predictor = load_predictor(checkpoint, Path(checkpoint).stat().st_mtime_ns)
