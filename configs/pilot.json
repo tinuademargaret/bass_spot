@@ -1,0 +1,40 @@
+{
+  "physics": {
+    "nx": 48,
+    "ny": 48,
+    "width": 6.0,
+    "height": 5.0,
+    "sound_speed": 343.0,
+    "damping": 0.04,
+    "source_sigma": 0.12,
+    "source_clearance": 0.2,
+    "reference": 1.0,
+    "magnitude_floor": 1e-08,
+    "frequencies": [
+      60.0,
+      90.0,
+      120.0,
+      150.0
+    ]
+  },
+  "seed": 2026,
+  "train_rooms": 24,
+  "validation_rooms": 6,
+  "test_rooms": 6,
+  "ood_rooms": 6,
+  "positions": 4,
+  "epochs": 40,
+  "batch_size": 32,
+  "learning_rate": 0.001,
+  "model_width": 8,
+  "training_seeds": [
+    11,
+    22,
+    33
+  ],
+  "wall_band": 0.3,
+  "candidates": 20,
+  "placement_rooms": 6,
+  "level_threshold": -35.0,
+  "quiet_weight": 1.0
+}

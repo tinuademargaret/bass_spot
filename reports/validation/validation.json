@@ -1,0 +1,103 @@
+{
+  "passed": true,
+  "relative_residual": 1.1799661559699675e-14,
+  "constant_laplacian_error": 0.0,
+  "modes": {
+    "analytical_hz": [
+      34.300000000000004,
+      43.32631578947368,
+      55.25992797578728,
+      68.60000000000001,
+      81.13648772216602,
+      86.65263157894736,
+      93.19425175168683,
+      102.89999999999999,
+      110.51985595157456
+    ],
+    "numerical_hz": [
+      34.29118486121522,
+      43.31397803945165,
+      55.24478303684716,
+      68.52949520084958,
+      81.07029299370659,
+      86.55395487399853,
+      93.09926134785522,
+      102.66213802600181,
+      110.39872651807815
+    ],
+    "maximum_relative_error": 0.0023115838095061096
+  },
+  "refinements": {
+    "rectangle": {
+      "relative_complex_l2": 0.0035460525905488026,
+      "frequency": 73.0,
+      "excluded_source_radius_m": 0.4
+    },
+    "L": {
+      "relative_complex_l2": 0.019274428030953115,
+      "frequency": 73.0,
+      "excluded_source_radius_m": 0.4
+    }
+  },
+  "bass_frequency_refinements": {
+    "rectangle": {
+      "60.0": {
+        "relative_complex_l2": 0.003346102449234969,
+        "frequency": 60.0,
+        "excluded_source_radius_m": 0.4
+      },
+      "90.0": {
+        "relative_complex_l2": 0.03358000751503007,
+        "frequency": 90.0,
+        "excluded_source_radius_m": 0.4
+      },
+      "120.0": {
+        "relative_complex_l2": 0.017025634689925594,
+        "frequency": 120.0,
+        "excluded_source_radius_m": 0.4
+      },
+      "150.0": {
+        "relative_complex_l2": 0.03889921027936166,
+        "frequency": 150.0,
+        "excluded_source_radius_m": 0.4
+      }
+    },
+    "L": {
+      "60.0": {
+        "relative_complex_l2": 0.005584360595300091,
+        "frequency": 60.0,
+        "excluded_source_radius_m": 0.4
+      },
+      "90.0": {
+        "relative_complex_l2": 0.015892418722088523,
+        "frequency": 90.0,
+        "excluded_source_radius_m": 0.4
+      },
+      "120.0": {
+        "relative_complex_l2": 0.05636532157668606,
+        "frequency": 120.0,
+        "excluded_source_radius_m": 0.4
+      },
+      "150.0": {
+        "relative_complex_l2": 0.025555935423166556,
+        "frequency": 150.0,
+        "excluded_source_radius_m": 0.4
+      }
+    }
+  },
+  "damping_sensitivity": {
+    "0.02": {
+      "mean_log_response": -22.166097558061306,
+      "maximum_magnitude": 0.3810351850540452
+    },
+    "0.04": {
+      "mean_log_response": -21.887235077188837,
+      "maximum_magnitude": 0.3813450609295039
+    },
+    "0.08": {
+      "mean_log_response": -22.89256935189299,
+      "maximum_magnitude": 0.373268504854856
+    }
+  },
+  "note": "Refinement thresholds apply to these fixtures, not every possible room/frequency."
+}

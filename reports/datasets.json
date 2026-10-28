@@ -1,0 +1,12 @@
+{
+  "full": {
+    "rooms": 220,
+    "fields": 3520,
+    "fingerprint": "5c43e7630f5fcbbf"
+  },
+  "pilot": {
+    "rooms": 42,
+    "fields": 672,
+    "fingerprint": "b8aa2d5653b4ee8d"
+  }
+}
