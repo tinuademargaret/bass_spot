@@ -71,9 +71,9 @@ The loss was mean absolute error (MAE) inside the room:
 ```math
 \text{loss}
 =
-\operatorname{mean}_{\text{examples}}
+\mathrm{mean}_{\text{examples}}
 \left[
-\operatorname{mean}_{\text{air cells}}
+\mathrm{mean}_{\text{air cells}}
 |\text{prediction}-\text{target}|
 \right].
 ```
