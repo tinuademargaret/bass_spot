@@ -9,43 +9,48 @@ You can try the interactive app here:
 ## Numerical model
 You can think of the numerical model as finding the repeating pressure pattern the room can sustain while the speaker keeps driving it. It achieves this using the *inhomogeneous Helmholtz equation*:
 
-\[
+```math
 \nabla^2 p + k^2(1+i\eta)p = -s,
 \qquad
 k=\frac{2\pi f}{c}.
-\]
+```
+
 Where:
-\(p\)	= Pressure response at each location
-\(\nabla^2p\) = How pressure curves across space
-\(s\) = Speaker source
-\(f\)	= Frequency
-\(c\)	= speed of sound (343 m/s)
-\(\eta\)	= Damping factor (0.04)
+
+- $p$	= Pressure response at each location
+- $\nabla^2p$ = How pressure curves across space
+- $s$ = Speaker source
+- $f$	= Frequency
+- $c$	= speed of sound (343 m/s)
+- $\eta$	= Damping factor (0.04)
 
 We divide the room into 48 x 48 grid cells. The spatial curvature for each cell  is approximated using neighbouring cells instead of calculating pressure at infinitely many points. 
 We represent the speaker as a small Gaussian “bump” centred at its position.
 
 The spatial-curvature term becomes:
-\[
+
+```math
 \nabla^2p \approx
 \frac{p_E-2p_C+p_W}{dx^2}
 +
 \frac{p_N-2p_C+p_S}{dy^2}.
-\]
+```
+
 Collecting the cell equations gives:
-\[
+
+```math
 A\mathbf p=\mathbf b.
-\]
-- \(A\) contains the room connections, frequency, spacing and damping.
-- \(\mathbf p\) contains the unknown pressures.
-- \(\mathbf b\) contains the speaker source.
+```
+
+- $A$ contains the room connections, frequency, spacing and damping.
+- $\mathbf p$ contains the unknown pressures.
+- $\mathbf b$ contains the speaker source.
+
 The matrix is sparse: each cell directly connects to at most four neighbours and itself.
 
-SciPy is then used to solve this system simultaneously. For a fixed room and frequency, moving the speaker changes only \(\mathbf b\). We can therefore reuse the expensive factorisation of \(A\), which makes testing many positions fast.
+SciPy is then used to solve this system simultaneously. For a fixed room and frequency, moving the speaker changes only $\mathbf b$. We can therefore reuse the expensive factorisation of $A$, which makes testing many positions fast.
 
-The pressure has a complex value so we calculate its amplitude \[
-|p|\]
- and convert it  into a logarithmic response.  That produces the heatmap.  The neural network we train learns to approximate the numerical heatmaps from the room, speaker position and frequency. 
+The pressure has a complex value so we calculate its amplitude $|p|$ and convert it  into a logarithmic response.  That produces the heatmap.  The neural network we train learns to approximate the numerical heatmaps from the room, speaker position and frequency.
  
  ## Deep Learning Model
 
@@ -62,7 +67,8 @@ The `baseline model` recieves only the first 3 channel while the `boundary model
 The network predicts amplitude information as in the numeric solver. 
 
 The loss was mean absolute error (MAE) inside the room:
-\[
+
+```math
 \text{loss}
 =
 \operatorname{mean}_{\text{examples}}
@@ -70,7 +76,8 @@ The loss was mean absolute error (MAE) inside the room:
 \operatorname{mean}_{\text{air cells}}
 |\text{prediction}-\text{target}|
 \right].
-\]
+```
+
 where the target is the solver generated heat map. 
 
 The baseline model has 487,297 parameters while the boundary model has 487,441 parameters. 
